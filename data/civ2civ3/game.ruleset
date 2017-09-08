@@ -31,15 +31,11 @@ name = _("Civ2Civ3 ruleset")
 ; /* TRANS: In the client, this is displayed alongside the contents of
 ;    README.civ2civ3, which are not localized. */
 summary = _("\
-You are playing Freeciv with civ2civ3 rules:\
+Gameplay more similar to civ3, keeping the combat system from civ2. \
+Aimed to be played on earth scenarios.\
 \n\n\
-Gameplay more similar to civ3, keeping the combat system from civ2.\
-\n\n\
-Adapted for single player, with AI less aggressive at start,\
- but more challenging at the end.\
-\n\n\
-The differences from the classic ruleset are listed in full in\
- README.civ2civ3.\
+The differences from the classic ruleset are listed in \
+README.civ2civ3.\
 ")
 
 ; Detailed description
@@ -196,7 +192,7 @@ tired_attack = TRUE
 ; If force_trade_route is set to TRUE it is illegal for an actor unit to
 ; enter the marketplace of a city if it can establish a trade route to it
 ; in stead.
-force_trade_route = TRUE
+force_trade_route = FALSE
 
 ; What each action should be called when showing them to the player.
 ; The first %s should be before the mnemonic of the action. A Freeciv client
@@ -397,8 +393,6 @@ target_reqs    =
     { "type",   "name", "range", "present"
       "UnitFlag", "Unbribable", "Local", FALSE
       "CityTile", "Center", "Local", FALSE
-      "Gov", "Republic", "Player", FALSE
-      "Gov", "Democracy", "Player", FALSE
       "MaxUnitsOnTile", "1", "Local", TRUE
     }
 
@@ -518,7 +512,7 @@ victory_lead_pct   = 200
 ; How much each culture point affects the migration
 ; from/to the city. Each culture point count as this many permilles
 ; of a migration point.
-migration_pml = 50
+migration_pml = 10
 
 [calendar]
 ; Year in the beginning of the game
@@ -725,16 +719,16 @@ cons_msg       = _("Your nation has achieved 10000 culture points!")
 [trade]
 settings =
   { "type",       "pct", "cancelling", "bonus"
-    "National",   0,     "Cancel",     "None"
-    "NationalIC", 0,     "Cancel",     "None"
-    "IN",         100,   "Cancel",     "None"
-    "INIC",       200,   "Cancel",     "None"
-    "Ally",       100,   "Cancel",     "None"
-    "AllyIC",     200,   "Cancel",     "None"
+    "National",   50,    "Inactive",   "None"
+    "NationalIC", 100,   "Inactive",   "None"
+    "IN",         0,     "Cancel",     "None"
+    "INIC",       0,     "Cancel",     "None"
+    "Ally",       50,    "Cancel",     "None"
+    "AllyIC",     100,   "Cancel",     "None"
     "Enemy",      0,     "Cancel",     "None"
     "EnemyIC",    0,     "Cancel",     "None"
-    "Team",       100,   "Cancel",     "None"
-    "TeamIC",     200,   "Cancel",     "None"
+    "Team",       50,    "Cancel",     "None"
+    "TeamIC",     100,   "Cancel",     "None"
   }
 
 [playercolors]
@@ -807,6 +801,7 @@ set =
       "flatpoles", 0
       "startunits", "cwsx"
       "citymindist", 3
+      "trademindist", 3
       "techlevel", 1
       "borders", "ENABLED"
       "foggedborders", "ENABLED"
@@ -815,7 +810,11 @@ set =
       "onsetbarbs", 120
       "occupychance", 100
       "razechance", 10
-      "techlossforgiveness", 0
+      "conquercost", 50
+      "diplbulbcost", 50
+      "techlossforgiveness", 50
       "techlossrestore", 50
+      "team_pooled_research", "DISABLED"
       "revolentype", "RANDQUICK"
+      "revolen", 3
     }
